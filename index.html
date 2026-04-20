@@ -1,24 +1,30 @@
 <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-20 items-center">
-            <div class="flex items-center gap-3">
-                <img src="logo insta 1.png" alt="Logo Green Box" class="h-10 w-auto object-contain">
-                <span class="text-2xl font-bold text-green-600">GREEN<span class="text-gray-900">BOX</span></span>
+        <div class="flex justify-between h-24 items-center">
+            <div class="flex flex-col items-center">
+                <span class="text-xl font-bold text-green-600 leading-none">GREEN<span class="text-gray-900">BOX</span></span>
+                <img src="logo insta 1.png" alt="Logo Green Box" class="h-10 w-auto mt-1">
             </div>
             
-            <div class="hidden md:flex space-x-8 font-medium">
+            <div class="hidden md:flex space-x-6 font-medium items-center">
                 <a href="#accueil" class="hover:text-green-600 transition">Accueil</a>
                 <a href="#menu" class="hover:text-green-600 transition">Le Menu</a>
-                <a href="#formules" class="hover:text-green-600 transition">Formules</a>
+                <a href="#formules" class="hover:text-green-600 transition">Formulations</a>
                 <a href="#recrutement" class="hover:text-green-600 transition">Contact</a>
+                
+                <button class="flex items-center gap-2 bg-gray-100 text-gray-700 px-4 py-2 rounded-full hover:bg-gray-200 transition text-sm">
+                    <i class="fa-solid fa-thumbtack"></i> Épingler
+                </button>
             </div>
 
-            <div class="hidden md:flex items-center space-x-4">
-                <a href="https://wa.me/212646147235" target="_blank" class="bg-green-600 text-white px-6 py-2 rounded-full hover:bg-green-700 transition font-semibold">Commander</a>
+            <div class="hidden md:flex items-center">
+                <a href="https://wa.me/212646147235" target="_blank" class="bg-green-600 text-white px-6 py-2 rounded-full hover:bg-green-700 transition font-semibold">
+                    Commander
+                </a>
             </div>
 
             <div class="md:hidden">
-                <button id="mobile-menu-button" class="text-gray-600 focus:outline-none p-2">
+                <button id="mobile-menu-button" class="text-gray-600 p-2">
                     <i class="fa-solid fa-bars text-2xl"></i>
                 </button>
             </div>
