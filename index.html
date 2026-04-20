@@ -1,4 +1,4 @@
-"    <!DOCTYPE html>
+    <!DOCTYPE html>
 
 <html lang="fr">
 
@@ -249,23 +249,108 @@
                 
 
                 <div class="hidden md:flex space-x-8 font-medium">
-                    <header>
+                    <!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Green Box</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* NAVBAR FIXÉE */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #2e7d32;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 25px;
+    z-index: 1000;
+}
+
+/* LOGO AVEC FORME */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: white;
+    padding: 5px 12px;
+    border-radius: 30px;
+}
+
+.logo img {
+    height: 40px;
+    border-radius: 50%;
+}
+
+.logo span {
+    color: #2e7d32;
+    font-weight: bold;
+}
+
+/* MENU */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    color: #c8e6c9;
+}
+
+/* POUR ÉVITER QUE LE CONTENU SOIT CACHÉ */
+body {
+    padding-top: 80px;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
     <nav class="navbar">
-        <!-- Logo -->
+
+        <!-- LOGO -->
         <div class="logo">
             <img src="logo insta 1.png" alt="Green Box Logo">
             <span>Green Box</span>
         </div>
 
-        <!-- Menu -->
+        <!-- MENU -->
         <ul class="nav-links">
             <li><a href="#">Accueil</a></li>
             <li><a href="#">Menu</a></li>
             <li><a href="#">Formulaire</a></li>
             <li><a href="#">Contact</a></li>
         </ul>
+
     </nav>
 </header>
+
+<!-- CONTENU POUR TEST -->
+<div style="padding:20px;">
+    <h1>Bienvenue chez Green Box 🥗</h1>
+    <p>Scroll pour voir la barre fixée en haut.</p>
+    <div style="height:1000px;"></div>
+</div>
+
+</body>
+</html>
 
                     <a href="#accueil" class="hover:text-green-600 transition">Accueil</a>
 
