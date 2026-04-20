@@ -9,18 +9,14 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
         
-        :root {
-            --nav-height: 80px;
-        }
-
         body {
             font-family: 'Poppins', sans-serif;
             scroll-behavior: smooth;
         }
 
-        /* Correction du décalage lors du clic sur les liens d'ancrage */
+        /* Correction pour les ancres : évite que la navbar ne cache le titre de la section */
         section {
-            scroll-margin-top: var(--nav-height);
+            scroll-margin-top: 80px;
         }
 
         .hero-gradient {
@@ -42,11 +38,12 @@
             transition: transform 0.3s ease;
         }
         
+        /* Boutons Flottants */
         .float-container {
             position: fixed;
             right: 20px;
             bottom: 30px;
-            z-index: 50;
+            z-index: 90; /* Juste en dessous de la navbar et du menu mobile */
             display: flex;
             flex-direction: column;
             gap: 15px;
@@ -62,16 +59,36 @@
             font-size: 26px;
             color: white;
             box-shadow: 0 4px 15px rgba(0,0,0,0.25);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, filter 0.3s ease;
         }
 
-        .bg-insta { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
-        .bg-wa { background-color: #25D366; }
-        .insta-btn { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+        .float-btn:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
 
-        .section-curve { border-radius: 4rem 4rem 0 0; }
-        .img-zoom { transition: transform 0.8s ease; }
-        .menu-card:hover .img-zoom { transform: scale(1.1); }
+        .bg-insta {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        }
+
+        .bg-wa {
+            background-color: #25D366;
+        }
+
+        .insta-btn {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        }
+
+        .section-curve {
+            border-radius: 4rem 4rem 0 0;
+        }
+
+        .img-zoom {
+            transition: transform 0.8s ease;
+        }
+        
+        .menu-card:hover .img-zoom {
+            transform: scale(1.1);
+        }
 
         .category-title {
             position: relative;
@@ -89,54 +106,41 @@
             height: 2px;
             background-color: #10b981;
         }
-
-        /* Styles pour éviter les bugs de scroll sur mobile quand le menu est ouvert */
-        .no-scroll {
-            overflow: hidden;
-        }
     </style>
 </head>
 <body class="bg-[#faf9f6] text-gray-800">
 
     <!-- Boutons Flottants -->
     <div class="float-container">
-        <a href="https://wa.me/212646147235" target="_blank" class="float-btn bg-wa hover:scale-110">
+        <a href="https://wa.me/212646147235" target="_blank" class="float-btn bg-wa" title="Commander sur WhatsApp">
             <i class="fa-brands fa-whatsapp"></i>
         </a>
-        <a href="https://www.instagram.com/green.__box" target="_blank" class="float-btn bg-insta hover:scale-110">
+        <a href="https://www.instagram.com/green.__box" target="_blank" class="float-btn bg-insta" title="Nous suivre sur Instagram">
             <i class="fa-brands fa-instagram"></i>
         </a>
     </div>
 
-    <!-- Navigation Fixée (Sticky) -->
-    <header class="sticky top-0 w-full z-[100] bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
+    <!-- Navigation FIXÉE (Sticky) -->
+    <header class="sticky top-0 w-full z-[100] bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100">
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
-                <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center">
-                    <a href="#accueil" class="text-2xl font-bold text-green-600 tracking-tight">
-                        GREEN<span class="text-gray-900">BOX</span>
-                    </a>
+                <div class="flex items-center">
+                    <a href="#accueil" class="text-2xl font-bold text-green-600">GREEN<span class="text-gray-900">BOX</span></a>
                 </div>
                 
-                <!-- Menu Bureau -->
-                <div class="hidden md:flex space-x-10 font-medium">
-                    <a href="#accueil" class="text-gray-600 hover:text-green-600 transition">Accueil</a>
-                    <a href="#menu" class="text-gray-600 hover:text-green-600 transition">Le Menu</a>
-                    <a href="#formules" class="text-gray-600 hover:text-green-600 transition">Formules</a>
-                    <a href="#recrutement" class="text-gray-600 hover:text-green-600 transition">Contact</a>
+                <div class="hidden md:flex space-x-8 font-medium">
+                    <a href="#accueil" class="hover:text-green-600 transition">Accueil</a>
+                    <a href="#menu" class="hover:text-green-600 transition">Le Menu</a>
+                    <a href="#formules" class="hover:text-green-600 transition">Formules</a>
+                    <a href="#recrutement" class="hover:text-green-600 transition">Contact</a>
                 </div>
 
-                <!-- Action -->
-                <div class="hidden md:flex items-center">
-                    <a href="https://wa.me/212646147235" target="_blank" class="bg-green-600 text-white px-7 py-2.5 rounded-full hover:bg-green-700 transition font-semibold shadow-md active:scale-95 transition-transform">
-                        Commander
-                    </a>
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="https://wa.me/212646147235" target="_blank" class="bg-green-600 text-white px-6 py-2 rounded-full hover:bg-green-700 transition font-semibold shadow-md active:scale-95 transition-transform">Commander</a>
                 </div>
 
-                <!-- Bouton Mobile -->
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-button" class="text-gray-600 p-2 focus:outline-none" aria-label="Ouvrir le menu">
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-600 focus:outline-none p-2">
                         <i class="fa-solid fa-bars-staggered text-2xl"></i>
                     </button>
                 </div>
@@ -144,7 +148,7 @@
         </nav>
     </header>
 
-    <!-- Menu Mobile (Overlay plein écran) -->
+    <!-- Menu Mobile Structure Overlay -->
     <div id="mobile-menu" class="hidden fixed inset-0 z-[200] bg-white flex flex-col p-6">
         <div class="flex justify-between items-center mb-12">
             <span class="text-2xl font-bold text-green-600">GREENBOX</span>
@@ -159,141 +163,190 @@
             <a href="#recrutement" class="mobile-link py-2 border-b border-gray-50">Contact</a>
         </div>
         <div class="mt-auto space-y-4">
-            <a href="https://wa.me/212646147235" target="_blank" class="block w-full bg-green-600 text-white py-4 rounded-2xl text-center font-bold text-lg">
-                Commander sur WhatsApp
-            </a>
-            <a href="https://www.instagram.com/green.__box" target="_blank" class="block w-full insta-btn text-white py-4 rounded-2xl text-center font-bold text-lg">
-                Nous suivre sur Instagram
-            </a>
+            <a href="https://wa.me/212646147235" target="_blank" class="block w-full bg-green-600 text-white py-4 rounded-2xl text-center font-bold text-lg">Commander sur WhatsApp</a>
+            <a href="https://www.instagram.com/green.__box" target="_blank" class="block w-full insta-btn text-white py-4 rounded-2xl text-center font-bold text-lg">Suivez-nous</a>
         </div>
     </div>
 
-    <!-- Contenu Principal -->
-    <main>
-        <!-- Section Héro -->
-        <section id="accueil" class="hero-gradient h-[85vh] flex items-center justify-center text-center text-white px-4">
-            <div class="max-w-4xl">
-                <span class="inline-block bg-white/10 backdrop-blur-md px-4 py-1 rounded-full text-xs font-semibold mb-6 tracking-widest uppercase border border-white/20">Cuisine Saine & Créative</span>
-                <h1 class="text-5xl md:text-7xl font-bold mb-6">Mangez Sain,<br>Vivez Mieux.</h1>
-                <p class="text-xl md:text-2xl mb-12 text-gray-100 italic font-light max-w-2xl mx-auto">La fraîcheur dans chaque box, pour une énergie durable toute la journée.</p>
+    <!-- Section Héro -->
+    <section id="accueil" class="hero-gradient h-[85vh] flex items-center justify-center text-center text-white px-4">
+        <div class="max-w-4xl">
+            <span class="inline-block bg-white/10 backdrop-blur-md px-4 py-1 rounded-full text-xs font-semibold mb-6 tracking-widest uppercase border border-white/20">Cuisine Saine & Créative</span>
+            <h1 class="text-5xl md:text-7xl font-bold mb-6">Mangez Sain,<br>Vivez Mieux.</h1>
+            <p class="text-xl md:text-2xl mb-12 text-gray-100 italic font-light max-w-2xl mx-auto">La fraîcheur dans chaque box, pour une énergie durable toute la journée.</p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="https://wa.me/212646147235" target="_blank" class="w-full sm:w-auto bg-green-600 text-white px-10 py-4 rounded-full font-bold hover:bg-green-700 transition shadow-2xl flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-xl"></i> Commander par WhatsApp
+                </a>
+                <a href="https://www.instagram.com/green.__box" target="_blank" class="w-full sm:w-auto bg-white/10 backdrop-blur-md text-white border border-white/30 px-10 py-4 rounded-full font-bold hover:bg-white hover:text-green-700 transition flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-instagram text-xl"></i> Suivez-nous
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Menu -->
+    <section id="menu" class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl font-bold text-gray-900 mb-2 uppercase tracking-widest">NOTRE CARTE</h2>
+                <p class="text-green-600 font-medium mb-6 italic">Ingrédients frais & Recettes maison</p>
+                <div class="w-16 h-1 bg-green-500 mx-auto"></div>
+            </div>
+
+            <!-- Box Signature -->
+            <div class="mb-24">
+                <div class="text-center mb-12">
+                    <h3 class="text-2xl font-bold uppercase tracking-wide text-gray-700 category-title">Nos Box Signature</h3>
+                </div>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="menu-card card-hover shadow-sm">
+                        <div class="overflow-hidden h-56">
+                            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Box Équilibre" class="w-full h-full object-cover img-zoom">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="font-bold text-lg">Box Équilibre</h4>
+                                <span class="text-green-600 font-bold">55 MAD</span>
+                            </div>
+                            <p class="text-sm text-gray-500 leading-relaxed">Poulet grillé, quinoa aux herbes et duo de légumes croquants.</p>
+                        </div>
+                    </div>
+                    <div class="menu-card card-hover shadow-sm">
+                        <div class="overflow-hidden h-56">
+                            <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Box Végé" class="w-full h-full object-cover img-zoom">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="font-bold text-lg">Box Végé</h4>
+                                <span class="text-green-600 font-bold">50 MAD</span>
+                            </div>
+                            <p class="text-sm text-gray-500 leading-relaxed">Falafels maison, houmous, avocat mûr et salade de saison.</p>
+                        </div>
+                    </div>
+                    <div class="menu-card card-hover shadow-sm">
+                        <div class="overflow-hidden h-56">
+                            <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Box Fitness" class="w-full h-full object-cover img-zoom">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="font-bold text-lg">Box Fitness</h4>
+                                <span class="text-green-600 font-bold">65 MAD</span>
+                            </div>
+                            <p class="text-sm text-gray-500 leading-relaxed">Pavé de saumon rôti, riz complet noir et brocolis vapeur.</p>
+                        </div>
+                    </div>
+                    <div class="menu-card card-hover shadow-sm">
+                        <div class="overflow-hidden h-56">
+                            <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Box Détox" class="w-full h-full object-cover img-zoom">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="font-bold text-lg">Box Détox</h4>
+                                <span class="text-green-600 font-bold">45 MAD</span>
+                            </div>
+                            <p class="text-sm text-gray-500 leading-relaxed">Jeunes pousses, fruits frais et graines de chia.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Douceurs & Énergie -->
+            <div class="bg-white rounded-[3rem] p-8 md:p-16 border border-gray-100 shadow-sm">
+                <div class="text-center mb-12">
+                    <h3 class="text-2xl font-bold uppercase tracking-wide text-gray-700 category-title">🥤 Smoothies & DESSERTS</h3>
+                </div>
                 
-                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                    <a href="https://wa.me/212646147235" target="_blank" class="w-full sm:w-auto bg-green-600 text-white px-10 py-4 rounded-full font-bold hover:bg-green-700 transition shadow-2xl flex items-center justify-center gap-2">
-                        <i class="fa-brands fa-whatsapp text-xl"></i> Commander
-                    </a>
-                    <a href="#menu" class="w-full sm:w-auto bg-white/10 backdrop-blur-md text-white border border-white/30 px-10 py-4 rounded-full font-bold hover:bg-white hover:text-green-700 transition flex items-center justify-center">
-                        Découvrir la carte
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section Menu -->
-        <section id="menu" class="py-24">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-20">
-                    <h2 class="text-4xl font-bold text-gray-900 mb-2 uppercase tracking-widest">NOTRE CARTE</h2>
-                    <p class="text-green-600 font-medium mb-6 italic">Ingrédients frais & Recettes maison</p>
-                    <div class="w-16 h-1 bg-green-500 mx-auto"></div>
-                </div>
-
-                <!-- Box Signature -->
-                <div class="mb-24">
-                    <div class="text-center mb-12">
-                        <h3 class="text-2xl font-bold uppercase tracking-wide text-gray-700 category-title">Nos Box Signature</h3>
+                <div class="grid md:grid-cols-2 gap-12 mb-16">
+                    <!-- Smoothies -->
+                    <div class="flex flex-col sm:flex-row gap-6 items-center bg-gray-50 p-6 rounded-3xl card-hover transition-all">
+                        <div class="w-32 h-32 flex-shrink-0 rounded-2xl overflow-hidden shadow-sm bg-gray-200">
+                             <img src="https://images.unsplash.com/photo-1536304953491-039c6379963e?auto=format&fit=crop&w=400&q=80" alt="Smoothies" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex-1 text-center sm:text-left">
+                            <h4 class="font-bold text-lg mb-1">Nos Smoothies Frais</h4>
+                            <p class="text-sm text-gray-500 mb-3 italic">Mix de fruits pressés à la minute.</p>
+                            <span class="text-green-600 font-bold bg-white px-3 py-1 rounded-full text-sm border border-green-100">18 MAD</span>
+                        </div>
                     </div>
-                    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                        <!-- Exemple de carte -->
-                        <div class="menu-card card-hover shadow-sm">
-                            <div class="overflow-hidden h-56 bg-gray-100 flex items-center justify-center">
-                                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80" alt="Box Équilibre" class="w-full h-full object-cover img-zoom">
-                            </div>
-                            <div class="p-6">
-                                <div class="flex justify-between items-start mb-2">
-                                    <h4 class="font-bold text-lg">Box Équilibre</h4>
-                                    <span class="text-green-600 font-bold">55 MAD</span>
-                                </div>
-                                <p class="text-sm text-gray-500 leading-relaxed">Poulet grillé, quinoa aux herbes et duo de légumes croquants.</p>
-                            </div>
+                    <!-- Cake -->
+                    <div class="flex flex-col sm:flex-row gap-6 items-center bg-gray-50 p-6 rounded-3xl card-hover transition-all">
+                        <div class="w-32 h-32 flex-shrink-0 rounded-2xl overflow-hidden shadow-sm">
+                            <img src="https://i.pinimg.com/736x/06/90/84/06908409d2af8575b9db337c669c3006.jpg" alt="Cake Banane" class="w-full h-full object-cover">
                         </div>
-                        <div class="menu-card card-hover shadow-sm">
-                            <div class="overflow-hidden h-56 bg-gray-100 flex items-center justify-center">
-                                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=80" alt="Box Végé" class="w-full h-full object-cover img-zoom">
-                            </div>
-                            <div class="p-6">
-                                <div class="flex justify-between items-start mb-2">
-                                    <h4 class="font-bold text-lg">Box Végé</h4>
-                                    <span class="text-green-600 font-bold">50 MAD</span>
-                                </div>
-                                <p class="text-sm text-gray-500 leading-relaxed">Falafels maison, houmous, avocat et salade de saison.</p>
-                            </div>
+                        <div class="flex-1 text-center sm:text-left">
+                            <h4 class="font-bold text-lg mb-1">Cake Banane Moelleux</h4>
+                            <p class="text-sm text-gray-500 mb-3 italic">Texture riche et fondante, banane mûre.</p>
+                            <span class="text-green-600 font-bold bg-white px-3 py-1 rounded-full text-sm border border-green-100">15 MAD</span>
                         </div>
-                        <div class="menu-card card-hover shadow-sm">
-                            <div class="overflow-hidden h-56 bg-gray-100 flex items-center justify-center">
-                                <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=800&q=80" alt="Box Fitness" class="w-full h-full object-cover img-zoom">
-                            </div>
-                            <div class="p-6">
-                                <div class="flex justify-between items-start mb-2">
-                                    <h4 class="font-bold text-lg">Box Fitness</h4>
-                                    <span class="text-green-600 font-bold">65 MAD</span>
-                                </div>
-                                <p class="text-sm text-gray-500 leading-relaxed">Saumon rôti, riz complet noir et brocolis vapeur.</p>
-                            </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
+                    <div class="text-center group">
+                        <div class="mb-5 overflow-hidden rounded-2xl h-48 shadow-sm bg-gray-200">
+                            <img src="https://images.unsplash.com/photo-1519996529931-28324d5a630e?auto=format&fit=crop&w=400&q=80" alt="Salade fruits" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
                         </div>
-                        <div class="menu-card card-hover shadow-sm">
-                            <div class="overflow-hidden h-56 bg-gray-100 flex items-center justify-center">
-                                <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=800&q=80" alt="Box Détox" class="w-full h-full object-cover img-zoom">
-                            </div>
-                            <div class="p-6">
-                                <div class="flex justify-between items-start mb-2">
-                                    <h4 class="font-bold text-lg">Box Détox</h4>
-                                    <span class="text-green-600 font-bold">45 MAD</span>
-                                </div>
-                                <p class="text-sm text-gray-500 leading-relaxed">Jeunes pousses, fruits frais et graines de chia.</p>
-                            </div>
+                        <h5 class="font-bold text-gray-800 tracking-wide mb-1 uppercase text-sm">Salade de fruits</h5>
+                        <p class="font-bold text-green-600">15 MAD</p>
+                    </div>
+                    <div class="text-center group">
+                        <div class="mb-5 overflow-hidden rounded-2xl h-48 shadow-sm bg-gray-200">
+                            <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=400&q=80" alt="Yaourt" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
                         </div>
+                        <h5 class="font-bold text-gray-800 tracking-wide mb-1 uppercase text-sm">Yaourt & Miel</h5>
+                        <p class="font-bold text-green-600">12 MAD</p>
+                    </div>
+                    <div class="text-center group">
+                        <div class="mb-5 overflow-hidden rounded-2xl h-48 shadow-sm bg-gray-200">
+                            <img src="https://images.unsplash.com/photo-1604497073476-82282216508c?auto=format&fit=crop&w=400&q=80" alt="Energy Balls" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        </div>
+                        <h5 class="font-bold text-gray-800 tracking-wide mb-1 uppercase text-sm">Energy Balls</h5>
+                        <p class="font-bold text-green-600">10 MAD <span class="text-[10px] text-gray-400 font-normal">(8 unités)</span></p>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Section Formules -->
-        <section id="formules" class="py-24 bg-gray-900 text-white section-curve">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="text-3xl md:text-5xl font-bold mb-4 italic text-green-500">⭐ Nos Formules</h2>
-                <p class="text-gray-400 mb-20 uppercase tracking-widest text-xs">Simplifiez votre quotidien</p>
-                <div class="grid md:grid-cols-3 gap-10">
-                    <div class="bg-gray-800 p-10 rounded-3xl border border-gray-700 card-hover">
-                        <span class="text-4xl block mb-4">🎓</span>
-                        <h3 class="text-2xl font-bold mb-2">Menu Étudiant</h3>
-                        <p class="text-green-500 text-3xl font-bold mb-6">55 MAD</p>
-                        <p class="text-gray-400 text-sm italic mb-8">Box au choix + Eau ou Jus</p>
-                        <a href="https://wa.me/212646147235" class="block w-full border border-green-500 text-green-500 py-3 rounded-xl hover:bg-green-500 hover:text-white transition font-semibold">Choisir</a>
-                    </div>
-                    <div class="bg-green-700 p-10 rounded-3xl md:scale-105 shadow-2xl relative z-10 border border-green-600">
-                        <div class="bg-yellow-400 text-green-900 text-[10px] font-bold py-1 px-4 rounded-full absolute -top-3 left-1/2 -translate-x-1/2 uppercase">Populaire</div>
-                        <span class="text-4xl block mb-4">💪</span>
-                        <h3 class="text-2xl font-bold mb-2">Menu Sportif</h3>
-                        <p class="text-white text-4xl font-bold mb-6">85 MAD</p>
-                        <p class="text-green-100 text-sm italic mb-8">Box Fitness + Smoothie + Dessert</p>
-                        <a href="https://wa.me/212646147235" class="block w-full bg-white text-green-700 py-4 rounded-xl font-bold shadow-lg active:scale-95 transition-transform">Commander</a>
-                    </div>
-                    <div class="bg-gray-800 p-10 rounded-3xl border border-gray-700 card-hover">
-                        <span class="text-4xl block mb-4">👑</span>
-                        <h3 class="text-2xl font-bold mb-2">Menu Premium</h3>
-                        <p class="text-green-500 text-3xl font-bold mb-6">90 MAD</p>
-                        <p class="text-gray-400 text-sm italic mb-8">Box + Jus Frais + Dessert</p>
-                        <a href="https://wa.me/212646147235" class="block w-full border border-green-500 text-green-500 py-3 rounded-xl hover:bg-green-500 hover:text-white transition font-semibold">Choisir</a>
-                    </div>
+    <!-- Formules -->
+    <section id="formules" class="py-24 bg-gray-900 text-white section-curve">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-5xl font-bold mb-4 italic text-green-500">⭐ Nos Formules</h2>
+            <p class="text-gray-400 mb-20 uppercase tracking-widest text-xs">Simplifiez votre quotidien</p>
+            
+            <div class="grid md:grid-cols-3 gap-10">
+                <div class="bg-gray-800 p-10 rounded-3xl border border-gray-700 card-hover">
+                    <span class="text-4xl block mb-4">🎓</span>
+                    <h3 class="text-2xl font-bold mb-2">Menu Étudiant</h3>
+                    <p class="text-green-500 text-3xl font-bold mb-6">55 MAD</p>
+                    <p class="text-gray-400 text-sm italic mb-8">Box au choix + Eau ou Jus</p>
+                    <a href="https://wa.me/212646147235" target="_blank" class="block w-full border border-green-500 text-green-500 py-3 rounded-xl hover:bg-green-500 hover:text-white transition font-semibold">Choisir</a>
+                </div>
+                <div class="bg-green-700 p-10 rounded-3xl transform md:scale-105 shadow-2xl relative z-10 border border-green-600">
+                    <div class="bg-yellow-400 text-green-900 text-[10px] font-bold py-1 px-4 rounded-full absolute -top-3 left-1/2 -translate-x-1/2 uppercase">Populaire</div>
+                    <span class="text-4xl block mb-4">💪</span>
+                    <h3 class="text-2xl font-bold mb-2">Menu Sportif</h3>
+                    <p class="text-white text-4xl font-bold mb-6">85 MAD</p>
+                    <p class="text-green-100 text-sm italic mb-8">Box Fitness + Smoothie + Dessert</p>
+                    <a href="https://wa.me/212646147235" target="_blank" class="block w-full bg-white text-green-700 py-4 rounded-xl font-bold shadow-lg active:scale-95 transition-transform">Commander</a>
+                </div>
+                <div class="bg-gray-800 p-10 rounded-3xl border border-gray-700 card-hover">
+                    <span class="text-4xl block mb-4">👑</span>
+                    <h3 class="text-2xl font-bold mb-2">Menu Premium</h3>
+                    <p class="text-green-500 text-3xl font-bold mb-6">90 MAD</p>
+                    <p class="text-gray-400 text-sm italic mb-8">Box + Jus Frais + Dessert</p>
+                    <a href="https://wa.me/212646147235" target="_blank" class="block w-full border border-green-500 text-green-500 py-3 rounded-xl hover:bg-green-500 hover:text-white transition font-semibold">Choisir</a>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer id="recrutement" class="bg-white py-20 border-t border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <span class="text-3xl font-bold text-green-600">GREENBOX</span>
+            <span class="text-3xl font-bold text-green-600">GREEN<span class="text-gray-900">BOX</span></span>
             <p class="mt-6 text-gray-500 text-sm max-w-md mx-auto leading-relaxed">
                 Le meilleur de la "Healthy Food" livré chaque jour à Rabat.
             </p>
@@ -315,25 +368,24 @@
         const menuBtn = document.getElementById('mobile-menu-button');
         const closeBtn = document.getElementById('close-menu');
         const mobileMenu = document.getElementById('mobile-menu');
-        const body = document.body;
-
-        // Fonction d'ouverture
+        
+        // Ouvrir menu mobile
         menuBtn.addEventListener('click', () => {
             mobileMenu.classList.remove('hidden');
-            body.classList.add('no-scroll');
+            document.body.style.overflow = 'hidden';
         });
 
-        // Fonction de fermeture
-        const closeOverlay = () => {
+        // Fermer menu mobile
+        const closeMenu = () => {
             mobileMenu.classList.add('hidden');
-            body.classList.remove('no-scroll');
+            document.body.style.overflow = 'auto';
         };
 
-        closeBtn.addEventListener('click', closeOverlay);
+        closeBtn.addEventListener('click', closeMenu);
 
-        // Fermeture auto sur clic lien mobile
+        // Fermer au clic sur un lien mobile
         document.querySelectorAll('.mobile-link').forEach(link => {
-            link.addEventListener('click', closeOverlay);
+            link.addEventListener('click', closeMenu);
         });
     </script>
 </body>
