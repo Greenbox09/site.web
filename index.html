@@ -1,751 +1,375 @@
-"    <!DOCTYPE html>
+"
 
+
+<!DOCTYPE html>
 <html lang="fr">
-
 <head>
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Green Box - Mangez Sain, Vivez Mieux</title>
-
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-
-    <style>
-
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-
-        
-
-        body {
-
-            font-family: 'Poppins', sans-serif;
-
-            scroll-behavior: smooth;
-
-        }
-
-
-
-        .hero-gradient {
-
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
-
-            background-size: cover;
-
-            background-position: center;
-
-        }
-
-
-
-        .card-hover:hover {
-
-            transform: translateY(-8px);
-
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-
-        }
-
-
-
-        .menu-card {
-
-            background: #ffffff;
-
-            border-radius: 1.5rem;
-
-            overflow: hidden;
-
-            border: 1px solid #f0f0f0;
-
-            transition: transform 0.3s ease;
-
-        }
-
-        
-
-        /* Boutons Flottants */
-
-        .float-container {
-
-            position: fixed;
-
-            right: 20px;
-
-            bottom: 30px;
-
-            z-index: 99;
-
-            display: flex;
-
-            flex-direction: column;
-
-            gap: 15px;
-
-        }
-
-
-
-        .float-btn {
-
-            width: 55px;
-
-            height: 55px;
-
-            border-radius: 50%;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            font-size: 26px;
-
-            color: white;
-
-            box-shadow: 0 4px 15px rgba(0,0,0,0.25);
-
-            transition: transform 0.3s ease, filter 0.3s ease;
-
-        }
-
-
-
-        .float-btn:hover {
-
-            transform: scale(1.1) rotate(5deg);
-
-        }
-
-
-
-        .bg-insta {
-
-            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-
-        }
-
-
-
-        .bg-wa {
-
-            background-color: #25D366;
-
-        }
-
-
-
-        .insta-btn {
-
-            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-
-        }
-
-
-
-        .section-curve {
-
-            border-radius: 4rem 4rem 0 0;
-
-        }
-
-
-
-        .img-zoom {
-
-            transition: transform 0.8s ease;
-
-        }
-
-        
-
-        .menu-card:hover .img-zoom {
-
-            transform: scale(1.1);
-
-        }
-
-
-
-        .category-title {
-
-            position: relative;
-
-            display: inline-block;
-
-            padding-bottom: 10px;
-
-        }
-
-
-
-        .category-title::after {
-
-            content: '';
-
-            position: absolute;
-
-            bottom: 0;
-
-            left: 50%;
-
-            transform: translateX(-50%);
-
-            width: 40px;
-
-            height: 2px;
-
-            background-color: #10b981;
-
-        }
-
-    </style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Box - Mangez Sain, Vivez Mieux</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .menu-card {
+            background: #ffffff;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            border: 1px solid #f0f0f0;
+            transition: transform 0.3s ease;
+        }
+        
+        .instagram-float {
+            position: fixed;
+            right: 20px;
+            bottom: 40px;
+            z-index: 99;
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .instagram-float:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .insta-btn {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        }
+
+        .section-curve {
+            border-radius: 4rem 4rem 0 0;
+        }
+
+        .img-zoom {
+            transition: transform 0.8s ease;
+        }
+        
+        .menu-card:hover .img-zoom {
+            transform: scale(1.1);
+        }
+
+        .category-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .category-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 2px;
+            background-color: #10b981;
+        }
+    </style>
 </head>
-
 <body class="bg-[#faf9f6] text-gray-800">
 
-
-
-    <!-- Boutons Flottants (WhatsApp & Instagram) -->
-
-    <div class="float-container">
-
-        <a href="https://wa.me/212646147235" target="_blank" class="float-btn bg-wa" title="Commander sur WhatsApp">
-
-            <i class="fa-brands fa-whatsapp"></i>
-
-        </a>
-
-        <a href="https://www.instagram.com/green.__box" target="_blank" class="float-btn bg-insta" title="Nous suivre sur Instagram">
-
-            <i class="fa-brands fa-instagram"></i>
-
-        </a>
-
-    </div>
-
-
-
-    <!-- Navigation -->
-
-    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm">
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-            <div class="flex justify-between h-20 items-center">
-
-                <div class="flex items-center">
-
-                    <span class="text-2xl font-bold text-green-600">GREEN<span class="text-gray-900">BOX</span></span>
-
-                </div>
-
-                
-
-                <div class="hidden md:flex space-x-8 font-medium">
-
-                    <a href="#accueil" class="hover:text-green-600 transition">Accueil</a>
-
-                    <a href="#menu" class="hover:text-green-600 transition">Le Menu</a>
-
-                    <a href="#formules" class="hover:text-green-600 transition">Formules</a>
-
-                    <a href="#recrutement" class="hover:text-green-600 transition">Contact</a>
-
-                </div>
-
-
-
-                <div class="hidden md:flex items-center space-x-4">
-
-                    <a href="https://wa.me/212646147235" target="_blank" class="bg-green-600 text-white px-6 py-2 rounded-full hover:bg-green-700 transition font-semibold">Commander</a>
-
-                </div>
-
-
-
-                <div class="md:hidden">
-
-                    <button id="mobile-menu-button" class="text-gray-600 focus:outline-none p-2">
-
-                        <i class="fa-solid fa-bars text-2xl"></i>
-
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </nav>
-
-
-
-    <!-- Section Héro -->
-
-    <section id="accueil" class="hero-gradient h-[80vh] flex items-center justify-center text-center text-white px-4">
-
-        <div class="max-w-4xl">
-
-            <span class="inline-block bg-white/10 backdrop-blur-md px-4 py-1 rounded-full text-xs font-semibold mb-6 tracking-widest uppercase border border-white/20">Cuisine Saine & Créative</span>
-
-            <h1 class="text-5xl md:text-7xl font-bold mb-6">Mangez Sain,<br>Vivez Mieux.</h1>
-
-            <p class="text-xl md:text-2xl mb-12 text-gray-100 italic font-light max-w-2xl mx-auto">La fraîcheur dans chaque box, pour une énergie durable toute la journée.</p>
-
-            
-
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-
-                <a href="https://wa.me/212646147235" target="_blank" class="w-full sm:w-auto bg-green-600 text-white px-10 py-4 rounded-full font-bold hover:bg-green-700 transition shadow-2xl flex items-center justify-center gap-2">
-
-                    <i class="fa-brands fa-whatsapp text-xl"></i> Commander par WhatsApp
-
-                </a>
-
-                <a href="https://www.instagram.com/green.__box" target="_blank" class="w-full sm:w-auto insta-btn text-white px-10 py-4 rounded-full font-bold hover:opacity-90 transition shadow-2xl flex items-center justify-center gap-2">
-
-                    <i class="fa-brands fa-instagram text-xl"></i> Suivez-nous
-
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- Section Menu -->
-
-    <section id="menu" class="py-24">
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-            <div class="text-center mb-20">
-
-                <h2 class="text-4xl font-bold text-gray-900 mb-2 uppercase tracking-widest">NOTRE CARTE</h2>
-
-                <p class="text-green-600 font-medium mb-6 italic">Ingrédients frais & Recettes maison</p>
-
-                <div class="w-16 h-1 bg-green-500 mx-auto"></div>
-
-            </div>
-
-
-
-            <!-- Box Signature -->
-
-            <div class="mb-24">
-
-                <div class="text-center mb-12">
-
-                    <h3 class="text-2xl font-bold uppercase tracking-wide text-gray-700 category-title">Nos Box Signature</h3>
-
-                </div>
-
-                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-
-                    <div class="menu-card card-hover shadow-sm">
-
-                        <div class="overflow-hidden h-56">
-
-                            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Box Équilibre" class="w-full h-full object-cover img-zoom">
-
-                        </div>
-
-                        <div class="p-6">
-
-                            <div class="flex justify-between items-start mb-2">
-
-                                <h4 class="font-bold text-lg">Box Équilibre</h4>
-
-                                <span class="text-green-600 font-bold">55 MAD</span>
-
-                            </div>
-
-                            <p class="text-sm text-gray-500 leading-relaxed">Poulet grillé, quinoa aux herbes et duo de légumes croquants.</p>
-
-                        </div>
-
-                    </div>
-
-                    <div class="menu-card card-hover shadow-sm">
-
-                        <div class="overflow-hidden h-56">
-
-                            <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Box Végé" class="w-full h-full object-cover img-zoom">
-
-                        </div>
-
-                        <div class="p-6">
-
-                            <div class="flex justify-between items-start mb-2">
-
-                                <h4 class="font-bold text-lg">Box Végé</h4>
-
-                                <span class="text-green-600 font-bold">50 MAD</span>
-
-                            </div>
-
-                            <p class="text-sm text-gray-500 leading-relaxed">Falafels maison, houmous, avocat mûr et salade de saison.</p>
-
-                        </div>
-
-                    </div>
-
-                    <div class="menu-card card-hover shadow-sm">
-
-                        <div class="overflow-hidden h-56">
-
-                            <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Box Fitness" class="w-full h-full object-cover img-zoom">
-
-                        </div>
-
-                        <div class="p-6">
-
-                            <div class="flex justify-between items-start mb-2">
-
-                                <h4 class="font-bold text-lg">Box Fitness</h4>
-
-                                <span class="text-green-600 font-bold">65 MAD</span>
-
-                            </div>
-
-                            <p class="text-sm text-gray-500 leading-relaxed">Pavé de saumon rôti, riz complet noir et brocolis vapeur.</p>
-
-                        </div>
-
-                    </div>
-
-                    <div class="menu-card card-hover shadow-sm">
-
-                        <div class="overflow-hidden h-56">
-
-                            <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Box Détox" class="w-full h-full object-cover img-zoom">
-
-                        </div>
-
-                        <div class="p-6">
-
-                            <div class="flex justify-between items-start mb-2">
-
-                                <h4 class="font-bold text-lg">Box Détox</h4>
-
-                                <span class="text-green-600 font-bold">45 MAD</span>
-
-                            </div>
-
-                            <p class="text-sm text-gray-500 leading-relaxed">Jeunes pousses, fruits frais et graines de chia.</p>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- Douceurs & Énergie -->
-
-            <div class="bg-white rounded-[3rem] p-8 md:p-16 border border-gray-100 shadow-sm">
-
-                <div class="text-center mb-12">
-
-                    <h3 class="text-2xl font-bold uppercase tracking-wide text-gray-700 category-title">🥤 Smoothies & DESSERTS</h3>
-
-                </div>
-
-                
-
-                <div class="grid md:grid-cols-2 gap-12 mb-16">
-
-                    <!-- Smoothies -->
-
-                    <div class="flex flex-col sm:flex-row gap-6 items-center bg-gray-50 p-6 rounded-3xl card-hover transition-all">
-
-                        <div class="w-32 h-32 flex-shrink-0 rounded-2xl overflow-hidden shadow-sm">
-
-                            <!-- Image Personnalisée via GitHub -->
-
-                            <img src="Nos Smoothies Fraisphoto.jpg" alt="Nos Smoothies Frais" class="w-full h-full object-cover">
-
-                        </div>
-
-                        <div class="flex-1 text-center sm:text-left">
-
-                            <h4 class="font-bold text-lg mb-1">Nos Smoothies Frais</h4>
-
-                            <p class="text-sm text-gray-500 mb-3 italic">Mix de fruits pressés à la minute.</p>
-
-                            <span class="text-green-600 font-bold bg-white px-3 py-1 rounded-full text-sm border border-green-100">18 MAD</span>
-
-                        </div>
-
-                    </div>
-
-                    <!-- Cake Banane Moelleux -->
-
-                    <div class="flex flex-col sm:flex-row gap-6 items-center bg-gray-50 p-6 rounded-3xl card-hover transition-all">
-
-                        <div class="w-32 h-32 flex-shrink-0 rounded-2xl overflow-hidden shadow-sm">
-
-                            <img src="https://i.pinimg.com/736x/06/90/84/06908409d2af8575b9db337c669c3006.jpg" alt="Cake Banane Moelleux Maison" class="w-full h-full object-cover">
-
-                        </div>
-
-                        <div class="flex-1 text-center sm:text-left">
-
-                            <h4 class="font-bold text-lg mb-1">Cake Banane Moelleux</h4>
-
-                            <p class="text-sm text-gray-500 mb-3 italic">Texture riche et fondante, banane mûre et pépites.</p>
-
-                            <span class="text-green-600 font-bold bg-white px-3 py-1 rounded-full text-sm border border-green-100">15 MAD</span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
-
-                    <div class="text-center group">
-
-                        <div class="mb-5 overflow-hidden rounded-2xl h-48 shadow-sm">
-
-                            <!-- Image Personnalisée via GitHub -->
-
-                            <img src="salade fruitsphoto.jpg" alt="Salade de fruits" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-
-                        </div>
-
-                        <h5 class="font-bold text-gray-800 tracking-wide mb-1 uppercase text-sm">Salade de fruits</h5>
-
-                        <p class="font-bold text-green-600">15 MAD</p>
-
-                    </div>
-
-                    <div class="text-center group">
-
-                        <div class="mb-5 overflow-hidden rounded-2xl h-48 shadow-sm">
-
-                            <!-- Image Personnalisée via GitHub -->
-
-                            <img src="Yaourt & Miel.jpg" alt="Yaourt Grec et Miel" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-
-                        </div>
-
-                        <h5 class="font-bold text-gray-800 tracking-wide mb-1 uppercase text-sm">Yaourt & Miel</h5>
-
-                        <div class="mt-2">
-
-                            <p class="text-xs text-gray-500 italic mb-1">Yaourt & miel coulant, granola et fruits.</p>
-
-                            <p class="font-bold text-green-600">12 MAD</p>
-
-                        </div>
-
-                    </div>
-
-                    <div class="text-center group">
-
-                        <div class="mb-5 overflow-hidden rounded-2xl h-48 shadow-sm">
-
-                            <!-- Image Personnalisée via GitHub -->
-
-                            <img src="Energy Balls.photo.jpg" alt="Energy Balls Dates Noix Cacao" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-
-                        </div>
-
-                        <h5 class="font-bold text-gray-800 tracking-wide mb-1 uppercase text-sm">Energy Balls</h5>
-
-                        <div class="mt-2">
-
-                            <p class="text-xs text-gray-500 italic mb-1">Dattes, noix et cacao.</p>
-
-                            <p class="font-bold text-green-600">10 MAD <span class="text-[10px] text-gray-400 font-normal">(8 unités)</span></p>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- Formules -->
-
-    <section id="formules" class="py-24 bg-gray-900 text-white section-curve">
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-
-            <h2 class="text-3xl md:text-5xl font-bold mb-4 italic text-green-500">⭐ Nos Formules</h2>
-
-            <p class="text-gray-400 mb-20 uppercase tracking-widest text-xs">Simplifiez votre quotidien</p>
-
-            
-
-            <div class="grid md:grid-cols-3 gap-10">
-
-                <div class="bg-gray-800 p-10 rounded-3xl border border-gray-700 card-hover">
-
-                    <span class="text-4xl block mb-4">🎓</span>
-
-                    <h3 class="text-2xl font-bold mb-2">Menu Étudiant</h3>
-
-                    <p class="text-green-500 text-3xl font-bold mb-6">55 MAD</p>
-
-                    <p class="text-gray-400 text-sm italic mb-8">Box au choix + Eau ou Jus</p>
-
-                    <a href="https://wa.me/212646147235" target="_blank" class="block w-full border border-green-500 text-green-500 py-3 rounded-xl hover:bg-green-500 hover:text-white transition font-semibold">Choisir</a>
-
-                </div>
-
-                <div class="bg-green-700 p-10 rounded-3xl transform md:scale-105 shadow-2xl relative z-10">
-
-                    <div class="bg-yellow-400 text-green-900 text-[10px] font-bold py-1 px-4 rounded-full absolute -top-3 left-1/2 -translate-x-1/2 uppercase">Populaire</div>
-
-                    <span class="text-4xl block mb-4">💪</span>
-
-                    <h3 class="text-2xl font-bold mb-2">Menu Sportif</h3>
-
-                    <p class="text-white text-4xl font-bold mb-6">85 MAD</p>
-
-                    <p class="text-green-100 text-sm italic mb-8">Box Fitness + Smoothie + Dessert</p>
-
-                    <a href="https://wa.me/212646147235" target="_blank" class="block w-full bg-white text-green-700 py-4 rounded-xl font-bold shadow-lg">Commander</a>
-
-                </div>
-
-                <div class="bg-gray-800 p-10 rounded-3xl border border-gray-700 card-hover">
-
-                    <span class="text-4xl block mb-4">👑</span>
-
-                    <h3 class="text-2xl font-bold mb-2">Menu Premium</h3>
-
-                    <p class="text-green-500 text-3xl font-bold mb-6">90 MAD</p>
-
-                    <p class="text-gray-400 text-sm italic mb-8">Box + Jus Frais + Dessert</p>
-
-                    <a href="https://wa.me/212646147235" target="_blank" class="block w-full border border-green-500 text-green-500 py-3 rounded-xl hover:bg-green-500 hover:text-white transition font-semibold">Choisir</a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- Footer -->
-
-    <footer id="recrutement" class="bg-white py-20 border-t border-gray-100">
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-
-            <span class="text-3xl font-bold text-green-600">GREEN<span class="text-gray-900">BOX</span></span>
-
-            <p class="mt-6 text-gray-500 text-m max-w-md mx-auto leading-relaxed">
-
-                Le meilleur de la Healthy Food livré chaque jour à Rabat.
-
-            </p>
-
-            <div class="flex gap-8 mt-10 justify-center">
-
-                <a href="https://www.instagram.com/green.__box" target="_blank" class="text-3xl text-gray-300 hover:text-pink-600 transition">
-
-                    <i class="fa-brands fa-instagram"></i>
-
-                </a>
-
-                <a href="https://wa.me/212646147235" target="_blank" class="text-3xl text-gray-300 hover:text-green-500 transition">
-
-                    <i class="fa-brands fa-whatsapp"></i>
-
-                </a>
-
-            </div>
-
-            <div class="mt-16 text-gray-300 text-[10px] uppercase tracking-[0.2em]">
-
-                &copy; 2026 Green Box Maroc.
-
-            </div>
-
-        </div>
-
-    </footer>
-
-
-
-    <script>
-
-        const menuBtn = document.getElementById('mobile-menu-button');
-
-        const mobileMenu = document.createElement('div');
-
-        mobileMenu.id = 'mobile-menu';
-
-        mobileMenu.className = 'hidden md:hidden fixed inset-0 z-40 bg-white pt-20 flex flex-col items-center gap-8 text-xl font-semibold';
-
-        mobileMenu.innerHTML = `
-
-            <a href="#accueil" class="mobile-link">Accueil</a>
-
-            <a href="#menu" class="mobile-link">Le Menu</a>
-
-            <a href="#formules" class="mobile-link">Formules</a>
-
-            <a href="#recrutement" class="mobile-link">Contact</a>
-
-            <a href="https://wa.me/212646147235" target="_blank" class="bg-green-600 text-white px-8 py-3 rounded-full">Commander</a>
-
-            <a href="https://www.instagram.com/green.__box" target="_blank" class="insta-btn text-white px-8 py-3 rounded-full">Instagram</a>
-
-        `;
-
-        document.body.appendChild(mobileMenu);
-
-        
-
-        menuBtn.addEventListener('click', () => {
-
-            mobileMenu.classList.toggle('hidden');
-
-        });
-
-
-
-        document.querySelectorAll('.mobile-link').forEach(link => {
-
-            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-
-        });
-
-    </script>
-
+    <!-- Bouton Instagram Flottant -->
+    <a href="https://www.instagram.com/green.__box" target="_blank" class="instagram-float">
+        <i class="fa-brands fa-instagram"></i>
+    </a>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex items-center">
+                    <span class="text-2xl font-bold text-green-600">GREEN<span class="text-gray-900">BOX</span></span>
+                </div>
+                
+                <div class="hidden md:flex space-x-8 font-medium">
+                    <a href="#accueil" class="hover:text-green-600 transition">Accueil</a>
+                    <a href="#menu" class="hover:text-green-600 transition">Le Menu</a>
+                    <a href="#formules" class="hover:text-green-600 transition">Formules</a>
+                    <a href="#recrutement" class="hover:text-green-600 transition">Contact</a>
+                </div>
+
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="https://wa.me/212646147235" target="_blank" class="bg-green-600 text-white px-6 py-2 rounded-full hover:bg-green-700 transition font-semibold">Commander</a>
+                </div>
+
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-600 focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Section Héro -->
+    <section id="accueil" class="hero-gradient h-[80vh] flex items-center justify-center text-center text-white px-4">
+        <div class="max-w-4xl">
+            <span class="inline-block bg-white/10 backdrop-blur-md px-4 py-1 rounded-full text-xs font-semibold mb-6 tracking-widest uppercase border border-white/20">Cuisine Saine & Créative</span>
+            <h1 class="text-5xl md:text-7xl font-bold mb-6">Mangez Sain,<br>Vivez Mieux.</h1>
+            <p class="text-xl md:text-2xl mb-12 text-gray-100 italic font-light max-w-2xl mx-auto">La fraîcheur dans chaque box, pour une énergie durable toute la journée.</p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="https://wa.me/212646147235" target="_blank" class="w-full sm:w-auto bg-green-600 text-white px-10 py-4 rounded-full font-bold hover:bg-green-700 transition shadow-2xl flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-xl"></i> Commander par WhatsApp
+                </a>
+                <a href="https://www.instagram.com/green.__box" target="_blank" class="w-full sm:w-auto insta-btn text-white px-10 py-4 rounded-full font-bold hover:opacity-90 transition shadow-2xl flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-instagram text-xl"></i> Suivez-nous
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Menu -->
+    <section id="menu" class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl font-bold text-gray-900 mb-2 uppercase tracking-widest">NOTRE CARTE</h2>
+                <p class="text-green-600 font-medium mb-6 italic">Ingrédients frais & Recettes maison</p>
+                <div class="w-16 h-1 bg-green-500 mx-auto"></div>
+            </div>
+
+            <!-- Box Signature -->
+            <div class="mb-24">
+                <div class="text-center mb-12">
+                    <h3 class="text-2xl font-bold uppercase tracking-wide text-gray-700 category-title">Nos Box Signature</h3>
+                </div>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="menu-card card-hover shadow-sm">
+                        <div class="overflow-hidden h-56">
+                            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Box Équilibre" class="w-full h-full object-cover img-zoom">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="font-bold text-lg">Box Équilibre</h4>
+                                <span class="text-green-600 font-bold">55 MAD</span>
+                            </div>
+                            <p class="text-sm text-gray-500 leading-relaxed">Poulet grillé, quinoa aux herbes et duo de légumes croquants.</p>
+                        </div>
+                    </div>
+                    <div class="menu-card card-hover shadow-sm">
+                        <div class="overflow-hidden h-56">
+                            <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Box Végé" class="w-full h-full object-cover img-zoom">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="font-bold text-lg">Box Végé</h4>
+                                <span class="text-green-600 font-bold">50 MAD</span>
+                            </div>
+                            <p class="text-sm text-gray-500 leading-relaxed">Falafels maison, houmous, avocat mûr et salade de saison.</p>
+                        </div>
+                    </div>
+                    <div class="menu-card card-hover shadow-sm">
+                        <div class="overflow-hidden h-56">
+                            <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Box Fitness" class="w-full h-full object-cover img-zoom">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="font-bold text-lg">Box Fitness</h4>
+                                <span class="text-green-600 font-bold">65 MAD</span>
+                            </div>
+                            <p class="text-sm text-gray-500 leading-relaxed">Pavé de saumon rôti, riz complet noir et brocolis vapeur.</p>
+                        </div>
+                    </div>
+                    <div class="menu-card card-hover shadow-sm">
+                        <div class="overflow-hidden h-56">
+                            <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Box Détox" class="w-full h-full object-cover img-zoom">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="font-bold text-lg">Box Détox</h4>
+                                <span class="text-green-600 font-bold">45 MAD</span>
+                            </div>
+                            <p class="text-sm text-gray-500 leading-relaxed">Jeunes pousses, fruits frais et graines de chia.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Douceurs & Énergie -->
+            <div class="bg-white rounded-[3rem] p-8 md:p-16 border border-gray-100 shadow-sm">
+                <div class="text-center mb-12">
+                    <h3 class="text-2xl font-bold uppercase tracking-wide text-gray-700 category-title">🥤 Smoothies & DESSERTS</h3>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-12 mb-16">
+                    <!-- Smoothies -->
+                    <div class="flex flex-col sm:flex-row gap-6 items-center bg-gray-50 p-6 rounded-3xl card-hover transition-all">
+                        <div class="w-32 h-32 flex-shrink-0 rounded-2xl overflow-hidden shadow-sm">
+                            <!--  -->
+                            <img src="https://images.unsplash.com/photo-1553531384-cc64ac80f931?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Nos Smoothies Frais" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex-1 text-center sm:text-left">
+                            <h4 class="font-bold text-lg mb-1">Nos Smoothies Frais</h4>
+                            <p class="text-sm text-gray-500 mb-3 italic">Mix de fruits pressés à la minute.</p>
+                            <span class="text-green-600 font-bold bg-white px-3 py-1 rounded-full text-sm border border-green-100">18 MAD</span>
+                        </div>
+                    
+                    </div>
+                    <!-- Cake Banane Moelleux -->
+                    <div class="flex flex-col sm:flex-row gap-6 items-center bg-gray-50 p-6 rounded-3xl card-hover transition-all">
+                        <div class="w-32 h-32 flex-shrink-0 rounded-2xl overflow-hidden shadow-sm">
+                            <img src="https://i.pinimg.com/736x/06/90/84/06908409d2af8575b9db337c669c3006.jpg" alt="Cake Banane Moelleux Maison" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex-1 text-center sm:text-left">
+                            <h4 class="font-bold text-lg mb-1">Cake Banane Moelleux</h4>
+                            <p class="text-sm text-gray-500 mb-3 italic">Texture riche et fondante, banane mûre et pépites.</p>
+                            <span class="text-green-600 font-bold bg-white px-3 py-1 rounded-full text-sm border border-green-100">25 MAD</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
+                    <div class="text-center group">
+                        <div class="mb-5 overflow-hidden rounded-2xl h-48 shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Salade de fruits" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        </div>
+                        <h5 class="font-bold text-gray-800 tracking-wide mb-1 uppercase text-sm">Salade de fruits</h5>
+                        <p class="font-bold text-green-600">15 MAD</p>
+                    </div>
+                    <div class="text-center group">
+                        <div class="mb-5 overflow-hidden rounded-2xl h-48 shadow-sm">
+                            <!--  -->
+                            <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Yaourt Grec et Miel" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        </div>
+                        <h5 class="font-bold text-gray-800 tracking-wide mb-1 uppercase text-sm">Yaourt & Miel</h5>
+                        <div class="mt-2">
+                            <p class="text-xs text-gray-500 italic mb-1">Yaourt & miel coulant, granola et fruits.</p>
+                            <p class="font-bold text-green-600">12 MAD</p>
+                            
+                        </div>
+                    </div>
+                    <div class="text-center group">
+                        <div class="mb-5 overflow-hidden rounded-2xl h-48 shadow-sm">
+                            <!--  -->
+                            <img src="https://images.unsplash.com/photo-1590080876477-8078693c042e?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Energy Balls Dates Noix Cacao" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        </div>
+                        <h5 class="font-bold text-gray-800 tracking-wide mb-1 uppercase text-sm">Energy Balls</h5>
+                        <div class="mt-2">
+                            <p class="text-xs text-gray-500 italic mb-1">Dattes, noix et cacao.</p>
+                            <p class="font-bold text-green-600">10 MAD <span class="text-[10px] text-gray-400 font-normal">(8 unités)</span></p>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formules -->
+    <section id="formules" class="py-24 bg-gray-900 text-white section-curve">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-5xl font-bold mb-4 italic text-green-500">⭐ Nos Formules</h2>
+            <p class="text-gray-400 mb-20 uppercase tracking-widest text-xs">Simplifiez votre quotidien</p>
+            
+            <div class="grid md:grid-cols-3 gap-10">
+                <div class="bg-gray-800 p-10 rounded-3xl border border-gray-700 card-hover">
+                    <span class="text-4xl block mb-4">🎓</span>
+                    <h3 class="text-2xl font-bold mb-2">Menu Étudiant</h3>
+                    <p class="text-green-500 text-3xl font-bold mb-6">55 MAD</p>
+                    <p class="text-gray-400 text-sm italic mb-8">Box au choix + Eau ou Jus</p>
+                    <a href="https://wa.me/212646147235" target="_blank" class="block w-full border border-green-500 text-green-500 py-3 rounded-xl hover:bg-green-500 hover:text-white transition font-semibold">Choisir</a>
+                </div>
+                <div class="bg-green-700 p-10 rounded-3xl transform md:scale-105 shadow-2xl relative z-10">
+                    <div class="bg-yellow-400 text-green-900 text-[10px] font-bold py-1 px-4 rounded-full absolute -top-3 left-1/2 -translate-x-1/2 uppercase">Populaire</div>
+                    <span class="text-4xl block mb-4">💪</span>
+                    <h3 class="text-2xl font-bold mb-2">Menu Sportif</h3>
+                    <p class="text-white text-4xl font-bold mb-6">85 MAD</p>
+                    <p class="text-green-100 text-sm italic mb-8">Box Fitness + Smoothie + Dessert</p>
+                    <a href="https://wa.me/212646147235" target="_blank" class="block w-full bg-white text-green-700 py-4 rounded-xl font-bold shadow-lg">Commander</a>
+                </div>
+                <div class="bg-gray-800 p-10 rounded-3xl border border-gray-700 card-hover">
+                    <span class="text-4xl block mb-4">👑</span>
+                    <h3 class="text-2xl font-bold mb-2">Menu Premium</h3>
+                    <p class="text-green-500 text-3xl font-bold mb-6">90 MAD</p>
+                    <p class="text-gray-400 text-sm italic mb-8">Box + Jus Frais + Dessert</p>
+                    <a href="https://wa.me/212646147235" target="_blank" class="block w-full border border-green-500 text-green-500 py-3 rounded-xl hover:bg-green-500 hover:text-white transition font-semibold">Choisir</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="recrutement" class="bg-white py-20 border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span class="text-3xl font-bold text-green-600">GREEN<span class="text-gray-900">BOX</span></span>
+            <p class="mt-6 text-gray-500 text-sm max-w-md mx-auto leading-relaxed">
+                Le meilleur de la "Healthy Food" livré chaque jour à Rabat.
+            </p>
+            <div class="flex gap-8 mt-10 justify-center">
+                <a href="https://www.instagram.com/green.__box" target="_blank" class="text-3xl text-gray-300 hover:text-pink-600 transition">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://wa.me/212646147235" target="_blank" class="text-3xl text-gray-300 hover:text-green-500 transition">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+            </div>
+            <div class="mt-16 text-gray-300 text-[10px] uppercase tracking-[0.2em]">
+                &copy; 2026 Green Box Maroc.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const menuBtn = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.createElement('div');
+        mobileMenu.id = 'mobile-menu';
+        mobileMenu.className = 'hidden md:hidden fixed inset-0 z-40 bg-white pt-20 flex flex-col items-center gap-8 text-xl font-semibold';
+        mobileMenu.innerHTML = `
+            <a href="#accueil" class="mobile-link">Accueil</a>
+            <a href="#menu" class="mobile-link">Le Menu</a>
+            <a href="#formules" class="mobile-link">Formules</a>
+            <a href="#recrutement" class="mobile-link">Contact</a>
+            <a href="https://wa.me/212646147235" target="_blank" class="bg-green-600 text-white px-8 py-3 rounded-full">Commander</a>
+            <a href="https://www.instagram.com/green.__box" target="_blank" class="insta-btn text-white px-8 py-3 rounded-full">Instagram</a>
+        `;
+        document.body.appendChild(mobileMenu);
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+    </script>
 </body>
-
 </html>
+
+
+
+
+" ajouter dans ce code que je veux fait des photos dans les parties suivants: Energy Balls Nos Smoothies Frais Yaourt & Miel Salade de fruits  sous les noms des fichiers suivants :
+Energy Balls.photo.jpg
+Nos Smoothies Fraisphoto.jpg
+Yaourt & Miel.jpg 
+ salade fruitsphoto.jpg
+dans gitbuh 
+aussi ajouter a cote du cercle de click du instagrame cercle de click pour whatsApp
+Yaourt & Miel.jpg pour github
+ salade fruitsphoto.jpg
